@@ -2,7 +2,7 @@ namespace CorEscuela.util
 {
     public static class Printer
     {
-        public static void DibujarLinea(int tam = 10){
+        public static void DrawLine(int tam = 10){
 
             System.Console.WriteLine("\t"+"".PadLeft(tam, '='));
 
@@ -11,9 +11,9 @@ namespace CorEscuela.util
         public static void WriteTitle(string titulo){
 
             int tam = titulo.Length + 4;
-            DibujarLinea(tam);
+            DrawLine(tam);
             Console.WriteLine($"\t| {titulo} |");
-            DibujarLinea(tam);
+            DrawLine(tam);
 
         }
 

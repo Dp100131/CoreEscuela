@@ -1,7 +1,7 @@
 using System;
 namespace CorEscuela.Entidades
 {
-    public abstract class ObjetoEscuelaBase
+    public class ObjetoEscuelaBase
     {
         public string UniqueID { get; set; } 
         public string Nombre { get; set; }
