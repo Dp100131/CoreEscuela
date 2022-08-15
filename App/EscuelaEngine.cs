@@ -101,5 +101,26 @@ namespace CorEscuela
                         new Curso() {Nombre = "102"}
             };
         }
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas(){
+
+            List<ObjetoEscuelaBase> ListObj = new List<ObjetoEscuelaBase>();
+            ListObj.Add(escuela);
+            ListObj.AddRange(escuela.Cursos);
+
+            foreach (var curso in escuela.Cursos)
+            {
+                ListObj.AddRange(curso.Asignaturas);
+                ListObj.AddRange(curso.Alumnos);
+
+                foreach (var alumno in curso.Alumnos)
+                {
+                    ListObj.AddRange(alumno.Evaluaciones);
+                }
+
+            }
+
+            return ListObj;
+
+        }
     }
 }

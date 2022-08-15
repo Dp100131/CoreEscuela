@@ -16,37 +16,7 @@ namespace CorEscuela
             System.Console.WriteLine(Engine.escuela);
 
             Engine.escuela.ImprimirCursosEscuela();
-
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
-            Printer.DrawLine(20);
-            Printer.WriteTitle("Pruebas de polimorfismo");
-
-            var alumnoTest = new Alumno("Clarie UnderWood");
-
-            ObjetoEscuelaBase obj = alumnoTest;
-
-            Printer.WriteTitle("Alumno");
-            System.Console.WriteLine($"Alumno: {alumnoTest.Nombre}.");
-            System.Console.WriteLine($"ID: {alumnoTest.UniqueID}");
-            System.Console.WriteLine($"Type: {alumnoTest.GetType()}");
-
-            Printer.WriteTitle("ObjetoEscuelaBase");
-            System.Console.WriteLine($"Alumno: {obj.Nombre}.");
-            System.Console.WriteLine($"ID: {obj.UniqueID}");
-            System.Console.WriteLine($"Type: {obj.GetType()}");
-
-            var objDummy = new ObjetoEscuelaBase(){Nombre="Frank UnderWood"};
-            
-            Printer.WriteTitle("ObjetoEscuelaBaseDummy");
-            System.Console.WriteLine($"Alumno: {objDummy.Nombre}.");
-            System.Console.WriteLine($"ID: {objDummy.UniqueID}");
-            System.Console.WriteLine($"Type: {objDummy.GetType()}");
-
-            alumnoTest = (Alumno)objDummy;//No es lo mismo
-            System.Console.WriteLine($"Alumno: {alumnoTest.Nombre}.");
-            System.Console.WriteLine($"ID: {alumnoTest.UniqueID}");
-            System.Console.WriteLine($"Type: {alumnoTest.GetType()}");
+            var ListaObjetos = Engine.GetObjetoEscuelas();
 
         }
 
