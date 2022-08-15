@@ -12,6 +12,11 @@ namespace CorEscuela.Entidades
             Nota = nota;
 
         }
+
+        public override string ToString(){
+
+            return $"{Nota}, {Asignatura.Nombre}";
+        }
         
     }
     
