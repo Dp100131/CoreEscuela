@@ -18,6 +18,24 @@ namespace CorEscuela
             Engine.escuela.ImprimirCursosEscuela();
             var ListaObjetos = Engine.GetObjetoEscuelas();
 
+            var dictionary = new Dictionary<int, string>();
+
+            dictionary.Add(10, "Juank");
+            dictionary.Add(23, "Daniel");
+            dictionary.Add(12, "Pinto");
+
+            foreach (var key in dictionary)
+            {
+                System.Console.WriteLine($"Key: {key.Key} Valor: {key.Value}");
+            }
+            
+
+            //Engine.escuela.LimpiarLugar();
+
+            /*var ListaILugar =   from obj in ListaObjetos
+                                where obj is ILugar
+                                select (ILugar) obj;*/
+
         }
 
         

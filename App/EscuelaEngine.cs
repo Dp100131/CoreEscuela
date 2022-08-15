@@ -2,6 +2,7 @@ using CorEscuela.Entidades;
 
 namespace CorEscuela
 {
+
     public sealed class EscuelaEngine
     {
         public Escuela escuela {get; set;}
@@ -21,7 +22,8 @@ namespace CorEscuela
             CargarEvaluaciones();
 
         }
-
+        
+        #region Metodos de Carga        
         private void CargarAlumnos()
         {
             Random rnd = new Random();
@@ -32,7 +34,6 @@ namespace CorEscuela
                 curso.Alumnos = CrearAlumnosAlAzar(cantRandom);
             }
         }
-
         private List<Alumno> CrearAlumnosAlAzar(int cantidad)
         {
             string[] nombre1 = { "Alba", "Felipa", "Eusebio", "Farid", "Donald", "Alvaro", "Nicolás" };
@@ -49,7 +50,6 @@ namespace CorEscuela
 
 
         }
-
         private void CargarAsignaturas()
         {
             foreach (var curso in escuela.Cursos)
@@ -65,7 +65,6 @@ namespace CorEscuela
                 curso.Asignaturas = listaAsignaturas;
             }
         }
-
         private void CargarEvaluaciones()
         {
             foreach (var curso in escuela.Cursos)
@@ -87,7 +86,6 @@ namespace CorEscuela
                 }
             }
         }
-
         private void CargarCursos()
         {
             escuela.Cursos = new List<Curso> {
@@ -101,26 +99,41 @@ namespace CorEscuela
                         new Curso() {Nombre = "102"}
             };
         }
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas(){
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscuelas(bool traeEvaluaciones = true, bool traeAlumnos = true, bool traeAsignaturas = true, bool traeCursos = true){
 
             List<ObjetoEscuelaBase> ListObj = new List<ObjetoEscuelaBase>();
             ListObj.Add(escuela);
-            ListObj.AddRange(escuela.Cursos);
+            
+            if (traeCursos)
+                ListObj.AddRange(escuela.Cursos);
 
             foreach (var curso in escuela.Cursos)
             {
-                ListObj.AddRange(curso.Asignaturas);
-                ListObj.AddRange(curso.Alumnos);
-
-                foreach (var alumno in curso.Alumnos)
+                if (traeAsignaturas)
                 {
-                    ListObj.AddRange(alumno.Evaluaciones);
+                    ListObj.AddRange(curso.Asignaturas);
+                }
+                if (traeAlumnos)
+                {
+                    ListObj.AddRange(curso.Alumnos);
                 }
 
-            }
+                if(traeEvaluaciones){
 
-            return ListObj;
+                    foreach (var alumno in curso.Alumnos)
+                    {
+                        ListObj.AddRange(alumno.Evaluaciones);
+                    }
+
+                }
+                    
+            }    
+            
+            return ListObj.AsReadOnly();
 
         }
+        #endregion
+
+
     }
 }
