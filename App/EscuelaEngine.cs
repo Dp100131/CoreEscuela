@@ -2,7 +2,7 @@ using CorEscuela.Entidades;
 
 namespace CorEscuela
 {
-    public class EscuelaEngine
+    public sealed class EscuelaEngine
     {
         public Escuela escuela {get; set;}
 
